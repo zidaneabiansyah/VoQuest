@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuizStore } from "@/store/quizStore";
 import { MajorRecommendation } from "@/types/major";
+import { downloadResultAsPDF } from "@/lib/utils/pdf";
 import { ResultLoading } from "./ResultLoading";
 import { ResultHeader } from "./ResultHeader";
 import { MajorCard } from "./MajorCard";
@@ -89,6 +90,10 @@ export function ResultContainer() {
 
   const [primaryRecommendation, ...alternativeRecommendations] = recommendations;
 
+  const handleDownloadPDF = () => {
+    downloadResultAsPDF(primaryRecommendation.major, primaryRecommendation.matchPercentage);
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-light-bg via-white to-primary/5 dark:from-dark-bg dark:via-secondary dark:to-primary/10">
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
@@ -168,7 +173,7 @@ export function ResultContainer() {
         )}
 
         {/* Actions */}
-        <ResultActions />
+        <ResultActions onDownloadPDF={handleDownloadPDF} />
       </div>
     </div>
   );
