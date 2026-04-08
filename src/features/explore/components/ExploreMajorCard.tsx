@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/lib/constants/categories";
 import { formatSalary } from "@/lib/utils/scoring";
 import { BriefcaseIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
+import { MajorIllustration } from "@/components/illustrations/MajorIllustration";
 
 interface ExploreMajorCardProps {
   major: Major;
@@ -17,23 +18,28 @@ export function ExploreMajorCard({ major, onClick }: ExploreMajorCardProps) {
     <Card
       hover
       onClick={onClick}
-      className="p-6 h-full flex flex-col"
+      className="p-6 h-full flex flex-col relative overflow-hidden"
     >
+      {/* Illustration Background */}
+      <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
+        <MajorIllustration category={major.category} />
+      </div>
+
       {/* Category Badge */}
-      <Badge variant="secondary" className="mb-3 w-fit">
+      <Badge variant="secondary" className="mb-3 w-fit relative z-10">
         {CATEGORIES[major.category]}
       </Badge>
 
       {/* Major Name */}
-      <h3 className="text-xl font-bold mb-3">{major.name}</h3>
+      <h3 className="text-xl font-bold mb-3 relative z-10">{major.name}</h3>
 
       {/* Description */}
-      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-1">
+      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-1 relative z-10">
         {major.description}
       </p>
 
       {/* Stats */}
-      <div className="space-y-2 pt-4 border-t border-gray-100 dark:border-gray-700">
+      <div className="space-y-2 pt-4 border-t border-gray-100 dark:border-gray-700 relative z-10">
         <div className="flex items-center gap-2 text-sm">
           <CurrencyDollarIcon className="w-4 h-4 text-primary" />
           <span className="text-gray-600 dark:text-gray-400">Gaji Awal:</span>
@@ -49,7 +55,7 @@ export function ExploreMajorCard({ major, onClick }: ExploreMajorCardProps) {
       </div>
 
       {/* Skills Preview */}
-      <div className="mt-4 flex flex-wrap gap-1">
+      <div className="mt-4 flex flex-wrap gap-1 relative z-10">
         {major.skills.slice(0, 3).map((skill) => (
           <span
             key={skill}
