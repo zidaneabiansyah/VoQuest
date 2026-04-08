@@ -1,10 +1,21 @@
 import { QuizContainer } from "@/features/quiz/components/QuizContainer";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { generateMetadata as genMeta, generateStructuredData } from "@/lib/seo/metadata";
 
-export const metadata = {
-  title: "Quiz - VoQuest",
-  description: "Temukan jurusan vokasi yang tepat untukmu melalui quiz interaktif",
-};
+export const metadata = genMeta({
+  title: "Quiz Karir Vokasi",
+  description: "Jawab 18 pertanyaan untuk menemukan jurusan SMK yang paling cocok dengan kepribadian dan minatmu. Gratis, cepat, dan akurat.",
+  url: "/quiz",
+  keywords: ["quiz karir", "tes minat bakat", "pilih jurusan SMK", "quiz vokasi"],
+});
 
 export default function QuizPage() {
-  return <QuizContainer />;
+  const quizData = generateStructuredData("quiz");
+
+  return (
+    <>
+      <StructuredData data={quizData} />
+      <QuizContainer />
+    </>
+  );
 }
