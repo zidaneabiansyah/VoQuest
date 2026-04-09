@@ -67,8 +67,8 @@ export function Footer() {
           <div>
             <h3 className="font-bold mb-4">Tentang</h3>
             <ul className="space-y-2">
-              {links.about.map((link) => (
-                <li key={link.href}>
+              {links.about.map((link, index) => (
+                <li key={`about-${index}`}>
                   <Link
                     href={link.href}
                     className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
@@ -87,9 +87,9 @@ export function Footer() {
             © {currentYear} VoQuest. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {links.legal.map((link) => (
+            {links.legal.map((link, index) => (
               <Link
-                key={link.href}
+                key={`legal-${index}`}
                 href={link.href}
                 className="text-sm text-gray-500 dark:text-gray-500 hover:text-primary transition-colors"
               >
