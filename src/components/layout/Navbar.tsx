@@ -31,13 +31,23 @@ export function Navbar() {
 
   // Initialize dark mode from localStorage
   useEffect(() => {
+    // Check localStorage first, then system preference
     const stored = localStorage.getItem("darkMode");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialDark = stored ? stored === "true" : prefersDark;
+    let initialDark = false;
+    
+    if (stored !== null) {
+      initialDark = stored === "true";
+    } else {
+      initialDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
     
     setIsDarkMode(initialDark);
+    
+    // Apply dark mode class
     if (initialDark) {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
