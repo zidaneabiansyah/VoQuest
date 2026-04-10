@@ -12,6 +12,12 @@
   --foreground: var(--secondary);
 }
 
+/* Dark mode variables */
+.dark {
+  --background: var(--dark-bg);
+  --foreground: #f0fdfa;
+}
+
 @theme inline {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
@@ -28,7 +34,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: var(--dark-bg);
     --foreground: #f0fdfa;
   }
