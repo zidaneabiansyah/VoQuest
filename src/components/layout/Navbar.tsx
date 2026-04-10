@@ -131,11 +131,21 @@ export function Navbar() {
                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Toggle dark mode"
               >
-                {isDarkMode ? (
-                  <SunIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                ) : (
-                  <MoonIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                )}
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={isDarkMode ? "dark" : "light"}
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {isDarkMode ? (
+                      <SunIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    ) : (
+                      <MoonIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
               </button>
 
               {/* CTA Button - Desktop */}
