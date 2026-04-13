@@ -100,7 +100,7 @@ Proyek ini dikembangkan sebagai bagian dari kompetisi dan terbuka untuk pengemba
 
 ## Lisensi
 
-Copyright © 2026 VoQuest Team - WA-FEST VORTEX 5.0
+Copyright © 2026 Zidane Abiansyah - WA-FEST VORTEX 5.0
 
 ---
 
